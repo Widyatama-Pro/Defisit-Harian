@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Defisit Harian</string>
+    <string name="title_activity_main">Defisit Harian</string>
+    <string name="package_name">com.defisitharian.app</string>
+    <string name="custom_url_scheme">com.defisitharian.app</string>
+</resources>

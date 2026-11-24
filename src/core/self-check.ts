@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import { calculateBalanceSummary, createCalibrationTransaction } from './finance';
+import { buildBalanceAreaSeries, buildOHLCCandles } from './charts';
+import { parseAndValidateBackupJson } from './backup';
+import type { Transaction } from '../types';
+
+const now = new Date(2026, 10, 24, 12).getTime();
+const tx = (id: string, type: Transaction['type'], direction: Transaction['direction'], amount: number, timestamp = now): Transaction => ({ id, type, direction, amount, categoryId: 'cat_test', note: '', timestamp, createdAt: timestamp });
+const income = tx('income', 'income', 'in', 500_000);
+const calibration = createCalibrationTransaction(350_000, 500_000, now + 1)!;
+const summary = calculateBalanceSummary([income, calibration], '30D', false, now + 2);
+assert.equal(summary.currentBalance, 350_000);
+assert.equal(summary.periodIncome, 500_000);
+assert.equal(summary.periodExpense, 0);
+assert.equal(createCalibrationTransaction(0, 0, now), null);
+const area = buildBalanceAreaSeries([], '7D', now);
+assert.equal(area.length, 7);
+assert.ok(area.every(point => point.value === 0));
+const candles = buildOHLCCandles([], '1D', now);
+assert.equal(candles.length, 30);
+assert.ok(candles.every(candle => candle.open === 0 && candle.high === 0 && candle.low === 0 && candle.close === 0));
+assert.throws(() => parseAndValidateBackupJson('{broken'), /JSON/);
+console.log('core self-check passed');

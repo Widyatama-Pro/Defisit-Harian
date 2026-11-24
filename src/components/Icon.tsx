@@ -1,0 +1,31 @@
+import type { SVGProps } from 'react';
+
+const paths: Record<string, React.ReactNode> = {
+  Wallet:<><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M3 9h18M16 15h2"/><path d="M6 6V4h13"/></>,
+  Chart:<><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/></>,
+  List:<><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></>,
+  Settings:<><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.5.9L16 21h-3l-.3-1.8a8 8 0 0 1-1.5-.9l-1.7.6-1.4-2.4 1.4-1.1a8 8 0 0 1 0-1.8l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.5-.9L13 4h3l.3 1.8a8 8 0 0 1 1.5.9l1.7-.6 1.4 2.4-1.4 1.1a8 8 0 0 1-.1 1.8Z" transform="translate(-1 -1)"/></>,
+  Plus:<><path d="M12 5v14M5 12h14"/></>,
+  Minus:<><path d="M5 12h14"/></>,
+  Sliders:<><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M2 14h4m4-6h4m4 8h4"/></>,
+  ArrowUp:<><path d="M12 19V5m-7 7 7-7 7 7"/></>,
+  ArrowDown:<><path d="M12 5v14m7-7-7 7-7-7"/></>,
+  Calendar:<><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></>,
+  Download:<><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5m-5 5V3"/></>,
+  Upload:<><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5m5-5v12"/></>,
+  Trash:<><path d="M3 6h18m-2 0-.9 14H5L4 6m4 0V4h8v2m-7 4v6m6-6v6"/></>,
+  Close:<><path d="m18 6-12 12M6 6l12 12"/></>,
+  Check:<><path d="m5 12 4 4L19 6"/></>,
+  Search:<><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></>,
+  More:<><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></>,
+  Spark:<><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-2-5.8L4 11l6-2.2L12 3Z"/><path d="m19 14 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z"/></>,
+  Bank:<><path d="m3 10 9-7 9 7M4 10h16M5 10v9m4-9v9m6-9v9m4-9v9M3 21h18"/></>,
+  Chevron:<><path d="m9 18 6-6-6-6"/></>,
+  Clock:<><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
+  Food:<><path d="M3 2v8a3 3 0 0 0 6 0V2M6 2v20M18 2c-2 2-3 4-3 7v2h3V2Zm0 9v11"/></>,
+  Transport:<><path d="m5 17-1 3m15-3 1 3M5 17h14l1-8H4l1 8Zm2 0v2m10-2v2M4 9l2-5h12l2 5M7 13h.01M17 13h.01"/></>,
+  Gift:<><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M2 12h20M12 8H7.5a2.5 2.5 0 1 1 2.5-2.5V8Zm0 0h4.5A2.5 2.5 0 1 0 14 5.5V8Z"/></>,
+  Bag:<><path d="M5 8h14l1 13H4L5 8Zm3 0V6a4 4 0 0 1 8 0v2"/></>,
+  Home:<><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Zm6 11v-7h6v7"/></>,
+};
+export function Icon({name,size=20,...props}:{name:string;size?:number}&SVGProps<SVGSVGElement>){return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>{paths[name]??paths.Wallet}</svg>}
